@@ -8,7 +8,7 @@
 # testing
 /coverage
 /public/data
-
+database.json
 
 # next.js
 /.next/

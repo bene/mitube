@@ -1,12 +1,13 @@
 # MiTube - Save YouTube videos forever.
 
-Set up a server
-
+Start up a server in seconds using Docker or Node.js
+```shell
+docker run benedotdev/mitube
+```
 ```shell
 npm run build
 npm start
 ```
 
 # iOS integration
-
-[Get iOS Shortcut](https://www.icloud.com/shortcuts/f0c136ded5c34476af9f8d7495cf97d1)
+[![Download Shortcut](.github/downloads-shortcut.png "Download Shortcut")](https://www.icloud.com/shortcuts/f0c136ded5c34476af9f8d7495cf97d1)
