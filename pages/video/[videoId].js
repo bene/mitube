@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
+import mime from "mime-types";
 
 export default function Home() {
   const router = useRouter();
@@ -66,26 +67,61 @@ export default function Home() {
             <div className="shadow rounded-2xl bg-white dark:bg-gray-700 dark:text-gray-300">
               <video
                 controls
+                playsInline
+                poster={`/api/video/${video.id}/thumbnail`}
                 className="w-full rounded-t-2xl"
-                poster={`/data/thumbnails/${video.id}.${video.thumbnailType}`}
               >
                 <source
-                  src={`/data/videos/${videoId}.${video.videoType}`}
-                  type="video/mp4"
+                  src={`/api/video/${videoId}/download`}
+                  type={mime.lookup(video.videoType)}
                 />
               </video>
               <div className="px-5 py-6 sm:px-6">
-                <p className="text-2xl font-bold mb-2">{video.title}</p>
-
-                {video.description &&
-                  video.description.split("\n").map((p) => (
-                    <p
-                      key={Math.random()}
-                      className="text-lg text-gray-500 dark:text-gray-400"
+                <p className="text-2xl font-bold mb-1 flex justify-between">
+                  <span>{video.title}</span>
+                  <span>
+                    <a
+                      href={`/api/video/${videoId}/download`}
+                      download={`${video.title}.${video.videoType}`}
                     >
-                      {p}
-                    </p>
-                  ))}
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+                        />
+                      </svg>
+                    </a>
+                  </span>
+                </p>
+                <p className="mb-2">
+                  {video.uploader} ·{" "}
+                  {!!video.uploadDate &&
+                    new Date(
+                      video.uploadDate.substring(0, 4),
+                      video.uploadDate.substring(4, 6),
+                      video.uploadDate.substring(6, 8)
+                    ).toLocaleDateString()}
+                </p>
+
+                <div className="truncate">
+                  {video.description &&
+                    video.description.split("\n").map((p) => (
+                      <p
+                        key={Math.random()}
+                        className="text-lg text-gray-500 dark:text-gray-400"
+                      >
+                        {p}
+                      </p>
+                    ))}
+                </div>
               </div>
             </div>
           </div>

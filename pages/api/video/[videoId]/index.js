@@ -1,4 +1,4 @@
-import * as DB from "../../../logic/database";
+import * as DB from "../../../../logic/database";
 
 export default function handler(req, res) {
   const { videoId } = req.query;

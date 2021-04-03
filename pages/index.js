@@ -29,10 +29,10 @@ export default function Home() {
           <div className="shadow rounded-2xl bg-white dark:bg-gray-700 dark:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105">
             <div className="relative">
               <img
-                src={`/data/thumbnails/${video.id}.${video.thumbnailType}`}
+                src={`/api/video/${video.id}/thumbnail`}
                 className="w-full rounded-t-2xl"
               />
-              <p className="absolute right-2 bottom-2 rounded-3xl text-sm bg-gray-700 text-white dark:bg-gray-500 dark:text-gray-400 px-3 py-1">
+              <p className="absolute right-2 bottom-2 rounded-3xl text-sm bg-gray-700 text-white dark:bg-gray-500 dark:text-gray-200 px-3 py-1">
                 {video.duration}
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function Home() {
               {video.categories.map((category) => (
                 <span
                   key={category}
-                  className="rounded-3xl bg-gray-700 text-white dark:bg-gray-500 dark:text-gray-400 px-3 py-2 mr-2"
+                  className="rounded-3xl bg-gray-700 text-white dark:bg-gray-500 dark:text-gray-200 px-3 py-2 mr-2"
                 >
                   {category}
                 </span>
@@ -69,7 +69,10 @@ export default function Home() {
     ));
 
   return (
-    <div className="">
+    <>
+      <Head>
+        <title>Library | MiTube</title>
+      </Head>
       <div className="bg-gray-800 pb-32">
         <header className="py-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,6 +109,6 @@ export default function Home() {
           </Link>
         </div>
       </main>
-    </div>
+    </>
   );
 }

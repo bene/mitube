@@ -36,20 +36,24 @@ function searchVideos(query, { inTitle = true, inDescription = true }) {
 }
 
 function load() {
-  if (!fs.existsSync("database.json")) {
+  if (!fs.existsSync(path.join("data", "database.json"))) {
     _data = {};
   } else {
-    const raw = fs.readFileSync("database.json", "utf-8");
+    const raw = fs.readFileSync(path.join("data", "database.json"), "utf-8");
     _data = JSON.parse(raw);
   }
   console.info("Database loaded.");
 
   // Create thumbnails folder
-  fs.mkdirSync(path.join("public", "data", "thumbnails"), { recursive: true });
+  fs.mkdirSync(path.join("data", "thumbnails"), { recursive: true });
 }
 
 function commit() {
-  fs.writeFileSync("database.json", JSON.stringify(_data, null, "  "), "utf-8");
+  fs.writeFileSync(
+    path.join("data", "database.json"),
+    JSON.stringify(_data, null, "  "),
+    "utf-8"
+  );
 }
 
 load();

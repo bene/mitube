@@ -17,7 +17,7 @@ export default function handler(req, res) {
   let dl = spawn("youtube-dl", [
     url,
     "-o",
-    "public/data/videos/%(id)s.%(ext)s",
+    path.join("data", "videos", "%(id)s.%(ext)s"),
     "--write-info-json",
   ]);
   let infoFilePath;
@@ -66,9 +66,7 @@ export default function handler(req, res) {
     // Save thumbnail
     await streamPipeline(
       result.body,
-      fs.createWriteStream(
-        path.join("public", "data", "thumbnails", thumbnailFileName)
-      )
+      fs.createWriteStream(path.join("data", "thumbnails", thumbnailFileName))
     );
 
     // Humanize duration
