@@ -3,12 +3,6 @@ import * as path from "path";
 
 let _data;
 
-const DownloadStatus = {
-  Downloading: "DOWNLOADING",
-  Complete: "COMPLETE",
-  Error: "ERROR",
-};
-
 function get(id) {
   return _data[id];
 }
@@ -58,4 +52,4 @@ function commit() {
 
 load();
 
-export { get, add, set, searchVideos, DownloadStatus, _data };
+export { get, add, set, searchVideos, _data };

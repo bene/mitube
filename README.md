@@ -1,4 +1,6 @@
-![iOS screenshot](.github/iphone_screenshot.png)
+<div style="text-align: center">
+    <img src="https://raw.githubusercontent.com/bene/mitube/main/.github/iphone-screenshot.png" alt="">
+</div>
 
 # MiTube - Save YouTube videos forever.
 
@@ -7,7 +9,7 @@ MiTube is only meant for personal use — don't share downloaded videos.
 
 ## Getting started
 
-Start up a server in seconds using Docker
+Start a server in seconds using Docker
 
 ```shell
 docker run benedotdev/mitube

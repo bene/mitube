@@ -13,8 +13,6 @@ export default async function handler(req, res) {
     `${videoId}.${video.videoType}`
   );
 
-  const options = {};
-
   let start;
   let end;
 
@@ -27,11 +25,11 @@ export default async function handler(req, res) {
       if (parts.length === 2) {
         const rangeStart = parts[0] && parts[0].trim();
         if (rangeStart && rangeStart.length > 0) {
-          options.start = start = parseInt(rangeStart);
+          start = parseInt(rangeStart);
         }
         const rangeEnd = parts[1] && parts[1].trim();
         if (rangeEnd && rangeEnd.length > 0) {
-          options.end = end = parseInt(rangeEnd);
+          end = parseInt(rangeEnd);
         }
       }
     }
@@ -70,7 +68,7 @@ export default async function handler(req, res) {
     res.setHeader("accept-ranges", "bytes");
   }
 
-  const downloadStream = fs.createReadStream(videoFilePath, options);
+  const downloadStream = fs.createReadStream(videoFilePath, { end, start });
   await new Promise((resolve) => {
     downloadStream.pipe(res);
     downloadStream.on("end", resolve);
