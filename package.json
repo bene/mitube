@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.0.0",
     "mime-types": "^2.1.29",
     "next": "^10.0.0",
     "node-fetch": "^2.6.1",
@@ -19,6 +20,8 @@
     "util": "^0.12.3"
   },
   "devDependencies": {
+    "@heroicons/react": "^1.0.1",
+    "@tailwindcss/forms": "^0.3.2",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.9",
     "tailwindcss": "^2.0.4"

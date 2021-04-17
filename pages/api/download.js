@@ -7,7 +7,7 @@ import * as path from "path";
 import { spawn } from "child_process";
 
 import * as DB from "../../logic/database";
-import { DownloadStatus, SetMetaData, UpdateMetaData } from "../../logic/types";
+import { DownloadStatus, UpdateMetaData } from "../../logic/types";
 import { pushUpdate } from "../../logic/updates";
 
 const streamPipeline = util.promisify(stream.pipeline);
@@ -84,7 +84,7 @@ export default function handler(req, res) {
           title: info.title,
           description: info.description,
           uploader: info.uploader,
-          uploadDate: info.uploadDate,
+          uploadDate: info.upload_date,
           duration: info.duration,
           categories: info.categories,
           tags: info.tags,

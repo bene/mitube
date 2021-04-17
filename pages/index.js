@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 import Head from "next/head";
 import Link from "next/link";
 
 import { DownloadStatus, UpdateMetaData } from "../logic/types";
-import { io } from "socket.io-client";
+import DownloadModal from "../components/DownloadModal";
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
@@ -112,12 +113,12 @@ export default function Home() {
             </p>
 
             <p className="text-gray-500 dark:text-gray-400 mb-4">
-              {video.description.length > 203
+              {video.description?.length > 203
                 ? video.description.substring(0, 200) + "..."
                 : video.description}
             </p>
 
-            {video.categories.map((category) => (
+            {video.categories?.map((category) => (
               <span
                 key={category}
                 className="rounded-3xl bg-gray-700 text-white dark:bg-gray-500 dark:text-gray-200 px-3 py-2 mr-2"
@@ -152,26 +153,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="">
-          <Link href="/download">
-            <a className="rounded-full p-3 bg-gray-700 text-white fixed right-4 bottom-4 shadow">
-              <svg
-                className="w-10 h-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                />
-              </svg>
-            </a>
-          </Link>
-        </div>
+        <DownloadModal/>
       </main>
     </>
   );
