@@ -94,9 +94,8 @@ export default function Home() {
             !!video.progress && (
               <div className="w-full h-2 bg-white">
                 <div
-                  className={`w-${Math.ceil(
-                    (video.progress / 100) * 12
-                  )}/12 h-full bg-red-500 transition-all duration-150 ease-linear`}
+                  className="h-full bg-red-500 transition-all duration-150 ease-linear"
+                  style={{width: `${video.progress}%`}}
                 />
               </div>
             )}
@@ -134,7 +133,6 @@ export default function Home() {
 
   return (
     <>
-      <span className="w-1/12 w-2/12 w-3/12 w-4/12 w-5/12 w-6/12 w-7/12 w-8/12 w-9/12 w-10/12 w-11/12 w-12/12" />
       <Head>
         <title>Library | MiTube</title>
       </Head>
